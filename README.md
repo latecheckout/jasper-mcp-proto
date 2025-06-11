@@ -11,7 +11,7 @@ To use this Jasper MCP server with Windsurf, add the following configuration to 
 ```json
 "jasper": {
   "command": "npx",
-  "args": ["-y", "https://github.com/latecheckout/jasper-mcp-prototype"],
+  "args": ["-y", "https://github.com/latecheckout/jasper-mcp-proto"],
   "env": {
     "JASPER_API_KEY": "YOUR_JASPER_API_KEY"
   }
@@ -31,7 +31,7 @@ Replace `YOUR_JASPER_API_KEY` with your actual Jasper API key.
    ```json
    "jasper": {
      "command": "npx",
-     "args": ["-y", "https://github.com/latecheckout/jasper-mcp-prototype"],
+     "args": ["-y", "https://github.com/latecheckout/jasper-mcp-proto"],
      "env": {
        "JASPER_API_KEY": "YOUR_JASPER_API_KEY"
      }
@@ -59,7 +59,7 @@ Claude Desktop can have issues running MCP servers with NPX, especially when nod
 
 - Clone this repository (if you haven't already):
   ```bash
-  git clone https://github.com/latecheckout/jasper-mcp-prototype.git
+  git clone https://github.com/latecheckout/jasper-mcp-proto.git
   cd jasper-mcp-prototype
   ```
 - Install dependencies:
