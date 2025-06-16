@@ -25,24 +25,28 @@ export interface SearchKnowledgeRequest {
 export function registerSearchKnowledgeBaseTool(server: McpServer) {
   server.tool(
     "search-knowledge-base",
-    "Search Jasper Knowledge Base using Jasper AI's /searchKnowledge endpoint. Returns relevant knowledge snippets for a given query.",
+    "Search Jasper Knowledge Base using Jasper AI's /searchKnowledge endpoint. Returns relevant knowledge snippets for a given query. Queries should be short phrase of keywords or a short sentence, much like a google search.",
     {
       query: z.string().describe("The search query string."),
       dedupByDocId: z
         .boolean()
         .optional()
+        .default(false)
         .describe("Deduplicate by document ID."),
       retrievalFilterThresholdMaxDocs: z
         .number()
         .optional()
+        .default(10)
         .describe("Max docs for retrieval filter threshold."),
       retrievalFilterThresholdScore: z
         .number()
         .optional()
+        .default(0.5)
         .describe("Score threshold for retrieval filter."),
       enableReranker: z
         .boolean()
         .optional()
+        .default(false)
         .describe("Enable reranker for search results."),
       knowledgeIds: z
         .array(z.string())
@@ -91,13 +95,13 @@ export function registerSearchKnowledgeBaseTool(server: McpServer) {
     }) => {
       const endpoint = "/searchKnowledge";
       const payload: any = { query };
-      const options: any = {};
+      const options: any = {
+        retrievalFilterThresholdScore: retrievalFilterThresholdScore ?? 0.5,
+      };
       if (dedupByDocId !== undefined) options.dedupByDocId = dedupByDocId;
       if (retrievalFilterThresholdMaxDocs !== undefined)
         options.retrievalFilterThresholdMaxDocs =
           retrievalFilterThresholdMaxDocs;
-      if (retrievalFilterThresholdScore !== undefined)
-        options.retrievalFilterThresholdScore = retrievalFilterThresholdScore;
       if (enableReranker !== undefined) options.enableReranker = enableReranker;
       if (knowledgeIds !== undefined) options.knowledgeIds = knowledgeIds;
       if (Object.keys(options).length > 0) payload.options = options;
