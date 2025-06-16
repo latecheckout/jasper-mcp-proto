@@ -9,6 +9,7 @@ import { registerGetAudiencesResource } from "./resources/getAudiences.js";
 import { registerGetStylesTool } from "./tools/getStyleGuides.js";
 import { registerGetAudiencesTool } from "./tools/getAudiences.js";
 import { registerGetBrandVoicesTool } from "./tools/getBrandVoices.js";
+import { registerSearchKnowledgeBaseTool } from "./tools/searchKnowledgebaseTool.js";
 
 if (!process.env.JASPER_API_KEY) {
   console.error(
@@ -33,6 +34,7 @@ registerGetBrandVoicesTool(server);
 registerGetAudiencesTool(server);
 registerApplyStyleTool(server);
 registerGetStylesTool(server);
+registerSearchKnowledgeBaseTool(server);
 
 // Resources
 registerGetStylesResource(server);
