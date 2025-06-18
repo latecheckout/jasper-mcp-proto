@@ -21,57 +21,68 @@ export interface SearchKnowledgeRequest {
  * This tool allows executing a command via the Jasper AI API.
  * @param server The MCP server instance.
  * @todo Confirm the actual Jasper AI endpoint for running commands.
+ * 
+ 
  */
+const SEARCH_KNOWLEDGE_BASE_DESCRIPTION = `The Jasper Knowledge Base holds info on your company's clients, internal business (strategy docs, updates, etc.), and marketing content.
+
+Use Jasper AI's /searchKnowledge endpoint to find relevant documents using short, Google-style keyword queries or phrases. This tool surfaces related documents—it does not answer questions directly.
+
+Output modes:
+- **knowledgeIds only**: For passing source docs to another tool (e.g., content generation). Example: "take the AGM meeting notes and turn it into an investor update"—request only knowledgeIds for generate-content.
+- **Summaries**: For topic overviews. Example: "what do we know about customer X?"—request document summaries.
+- **Full Text**: For specific details/answers. Example: "did we meet our targets last quarter?"—request full text of relevant docs.
+
+Choose output (knowledgeIds, summaries, text, or any combination) to match your query. Queries should be general and discovery-oriented, not direct Q&A.`;
+
+const SEARCH_KNOWLEDGE_BASE_INPUT_SCHEMA = {
+  query: z.string().describe("The search query string."),
+  dedupByDocId: z
+    .boolean()
+    .optional()
+    .default(false)
+    .describe("Deduplicate by document ID."),
+  retrievalFilterThresholdMaxDocs: z
+    .number()
+    .optional()
+    .default(10)
+    .describe("Max docs for retrieval filter threshold."),
+  retrievalFilterThresholdScore: z
+    .number()
+    .optional()
+    .default(0.5)
+    .describe("Score threshold for retrieval filter."),
+  enableReranker: z
+    .boolean()
+    .optional()
+    .default(false)
+    .describe("Enable reranker for search results."),
+  knowledgeIds: z
+    .array(z.string())
+    .optional()
+    .describe("Restrict search to these knowledge IDs."),
+  includeText: z
+    .boolean()
+    .optional()
+    .default(true)
+    .describe("Include the text of each file in the result."),
+  includeSummary: z
+    .boolean()
+    .optional()
+    .default(true)
+    .describe("Include the summary of each file in the result."),
+  includeTags: z
+    .boolean()
+    .optional()
+    .default(true)
+    .describe("Include the tags of each file in the result."),
+};
+
 export function registerSearchKnowledgeBaseTool(server: McpServer) {
   server.tool(
     "search-knowledge-base",
-    "Search Jasper Knowledge Base using Jasper AI's /searchKnowledge endpoint. Returns relevant knowledge snippets for a given query. Queries should be short phrase of keywords or a short sentence, much like a google search.",
-    {
-      query: z.string().describe("The search query string."),
-      dedupByDocId: z
-        .boolean()
-        .optional()
-        .default(false)
-        .describe("Deduplicate by document ID."),
-      retrievalFilterThresholdMaxDocs: z
-        .number()
-        .optional()
-        .default(10)
-        .describe("Max docs for retrieval filter threshold."),
-      retrievalFilterThresholdScore: z
-        .number()
-        .optional()
-        .default(0.5)
-        .describe("Score threshold for retrieval filter."),
-      enableReranker: z
-        .boolean()
-        .optional()
-        .default(false)
-        .describe("Enable reranker for search results."),
-      knowledgeIds: z
-        .array(z.string())
-        .optional()
-        .describe("Restrict search to these knowledge IDs."),
-      includeText: z
-        .boolean()
-        .optional()
-        .default(true)
-        .describe("Include the text of each file in the result."),
-      includeSummary: z
-        .boolean()
-        .optional()
-        .default(true)
-        .describe("Include the summary of each file in the result."),
-      includeTags: z
-        .boolean()
-        .optional()
-        .default(true)
-        .describe("Include the tags of each file in the result."),
-    },
-    {
-      description:
-        "Search Jasper Knowledge Base using Jasper AI's /searchKnowledge endpoint. Returns relevant knowledge snippets for a given query.",
-    },
+    SEARCH_KNOWLEDGE_BASE_DESCRIPTION,
+    SEARCH_KNOWLEDGE_BASE_INPUT_SCHEMA,
     async ({
       query,
       dedupByDocId,
