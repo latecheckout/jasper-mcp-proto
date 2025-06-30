@@ -1,11 +1,11 @@
 {
   "dxt_version": "0.1",
-  "name": "jasper-ai-mcp",
-  "display_name": "Jasper AI MCP",
+  "name": "jasper-mcp-prototype",
+  "display_name": "Jasper MCP Prototype",
   "version": "1.0.0",
-  "description": "Jasper AI MCP Prototype Server",
+  "description": "Jasper MCP Prototype",
   "author": {
-    "name": "Late Checkout"
+    "name": "Jasper"
   },
   "server": {
     "type": "node",
@@ -37,27 +37,27 @@
   "tools": [
     {
       "name": "apply-style",
-      "description": "Applies a specified styleguide's rules to the provided text content and returns the styled content. This tool can be used to ensure content conforms to the user's styleguide, especially useful when generating content for the public or for specific audiences."
+      "description": "Applies a specified styleguide's rules to the provided text content and returns the styled content."
     },
     {
       "name": "generate-content",
-      "description": "Generate content via Jasper AI. Jasper is a premium generative marketing with the user's styleguide, brand voices and audiences. Jasper can be used to apply styles or generate content for the user that matches their styleguide, brand voices and audiences."
+      "description": "Generate content via Jasper AI using your style guide, brand voices and audiences."
     },
     {
       "name": "get-jasper-audiences",
-      "description": "Return a list of the audiences belonging to the user. These audiences include a description to help the LLM and/or the user pick an appropriate audience, and an audienceId that can be passed to jasper's generate-content tool to use that audience when creating content."
+      "description": "Return a list of the audiences belonging to the user."
     },
     {
       "name": "get-jasper-brand-voices",
-      "description": "Return a list of the brand voices/tones belonging to the user. These brand voices include a description to help the LLM and/or the user pick an appropriate tone, and a toneId that can be passed to jasper's generate-content tool to use that brand voice/tone when creating content."
+      "description": "Return a list of the brand voices/tones belonging to the user."
     },
     {
       "name": "get-jasper-style-guides",
-      "description": "Return the style guide id belonging to the user. This style guide id can be passed to jasper's generate-content tool to use that style when creating content. It can also be used in the apply-style tool to apply a style to a given text."
+      "description": "Return the style guide id belonging to the user."
     },
     {
       "name": "search-knowledge-base",
-      "description": "The Jasper Knowledge Base holds info on your company's clients, internal business (strategy docs, updates, etc.), and marketing content. Use Jasper AI's /searchKnowledge endpoint to find relevant documents using short, Google-style keyword queries or phrases. This tool surfaces related documents—it does not answer questions directly. Output modes: knowledgeIds only, summaries, or full text."
+      "description": "Search the Jasper Knowledge Base for relevant documents using short, Google-style keyword queries or phrases."
     }
   ]
 }
