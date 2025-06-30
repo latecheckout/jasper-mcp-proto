@@ -24,27 +24,13 @@ Replace `YOUR_JASPER_API_KEY` with your actual Jasper API key.
 
 1. Open the Claude Desktop application.
 2. Navigate to `Settings` (or `Preferences`).
-3. Go to the `Developer` tab.
-4. Click on the `Edit Config` button. This will open the Claude Desktop configuration file (e.g., `claude_desktop_config.json` or a similar name, often located in a Claude-specific settings directory) in a text editor.
-5. In the opened JSON file, locate or add an `mcpServers` object. Add the following `jasper` configuration as a new entry within `mcpServers`:
+3. Go to the `Extensions` tab.
+4. Download the [jasper-mcp-prototype.dxt](https://github.com/latecheckout/jasper-mcp-proto/blob/main/jasper-mcp-prototype.dxt) file.
+5. Drag and drop this file into the extensions window of Claude Desktop.
 
-   ```json
-   "jasper": {
-     "command": "npx",
-     "args": ["-y", "https://github.com/latecheckout/jasper-mcp-proto"],
-     "env": {
-       "JASPER_API_KEY": "YOUR_JASPER_API_KEY"
-     }
-   }
-   ```
-
-   **Note:** Ensure the resulting file is valid JSON. If adding `jasper` to an existing `mcpServers` object with other servers, make sure to add a comma after the preceding server entry if necessary.
-
-6. Replace `YOUR_JASPER_API_KEY` with your actual Jasper API key in the `env` section.
-7. Save the configuration file.
-8. Completely close and restart the Claude Desktop application for the changes to take effect.
-
-If you encounter issues with NPX in Claude Desktop (especially if using `nvm`), please refer to the "Claude Desktop Alternate" method detailed below.
+6. Click Install
+7. Add your Jasper API Key in the configuration input
+8. Enable the extension using the toggle.
 
 ### Claude Desktop Local Build
 
