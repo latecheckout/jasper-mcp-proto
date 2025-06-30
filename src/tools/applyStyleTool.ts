@@ -28,7 +28,7 @@ type ApplyStyleHandlerInput = z.infer<typeof applyStyleInputSchema>;
 export function registerApplyStyleTool(server: McpServer): void {
   server.tool(
     "apply-style",
-    "Applies a specified styleguide's rules to the provided text content and returns the styled content. This tool can be used to ensure content conforms to the user's styleguide, especially useful when generating content for the public or for specific audiences.",
+    "Applies a specified style guide's rules to the provided text content and returns the styled content. This tool can be used to ensure content conforms to the user's style guide, especially useful when generating content for public consumption or checking published content against the style guide.",
     {
       styleId: z.string().describe("The ID of the style to apply."),
       content: z.string().describe("The text content to style."),

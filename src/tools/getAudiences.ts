@@ -19,7 +19,7 @@ export function registerGetAudiencesTool(server: McpServer) {
     "get-jasper-audiences",
     "Return a list of the audiences belonging to the user. These audiences include a description to help the LLM and/or the user pick an appropriate audience, and an audienceId that can be passed to jasper's generate-content tool to use that audience when creating content.",
     async () => {
-      const endpoint = "/audiences";
+      const endpoint = "/audiences?pageSize=100";
       const result = await makeJasperRequest<
         GetBrandVoicesRequest,
         GetBrandVoicesResponse
