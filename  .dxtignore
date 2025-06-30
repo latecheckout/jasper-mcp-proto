@@ -1,0 +1,7 @@
+*.test.js
+src/**/*.test.ts
+coverage/
+*.log
+.env*
+temp/
+docs/

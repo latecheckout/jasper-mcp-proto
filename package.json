@@ -26,7 +26,6 @@
   ],
   "author": "",
   "license": "MIT",
-  "packageManager": "pnpm@10.11.0",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
     "zod": "^3.22.4"

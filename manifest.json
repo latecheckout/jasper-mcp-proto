@@ -1,0 +1,63 @@
+{
+  "dxt_version": "0.1",
+  "name": "jasper-mcp-prototype",
+  "display_name": "Jasper MCP Prototype",
+  "version": "1.0.0",
+  "description": "Jasper MCP Prototype",
+  "author": {
+    "name": "Jasper"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "JASPER_API_KEY": "${user_config.JASPER_API_KEY}"
+      }
+    }
+  },
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"]
+  },
+  "user_config": {
+    "JASPER_API_KEY": {
+      "type": "string",
+      "title": "Jasper API Key",
+      "description": "API key for your Jasper workspace",
+      "required": true,
+      "sensitive": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/latecheckout/jasper-mcp-proto"
+  },
+  "tools": [
+    {
+      "name": "apply-style",
+      "description": "Applies a specified styleguide's rules to the provided text content and returns the styled content."
+    },
+    {
+      "name": "generate-content",
+      "description": "Generate content via Jasper AI using your style guide, brand voices and audiences."
+    },
+    {
+      "name": "get-jasper-audiences",
+      "description": "Return a list of the audiences belonging to the user."
+    },
+    {
+      "name": "get-jasper-brand-voices",
+      "description": "Return a list of the brand voices/tones belonging to the user."
+    },
+    {
+      "name": "get-jasper-style-guides",
+      "description": "Return the style guide id belonging to the user."
+    },
+    {
+      "name": "search-knowledge-base",
+      "description": "Search the Jasper Knowledge Base for relevant documents using short, Google-style keyword queries or phrases."
+    }
+  ]
+}
