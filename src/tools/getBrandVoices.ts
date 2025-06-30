@@ -19,7 +19,7 @@ export function registerGetBrandVoicesTool(server: McpServer) {
     "get-jasper-brand-voices",
     "Return a list of the brand voices/tones belonging to the user. These brand voices include a description to help the LLM and/or the user pick an appropriate tone, and a toneId that can be passed to jasper's generate-content tool to use that brand voice/tone when creating content. ",
     async () => {
-      const endpoint = "/tones";
+      const endpoint = "/tones?size=100";
       const result = await makeJasperRequest<
         GetBrandVoicesRequest,
         GetBrandVoicesResponse

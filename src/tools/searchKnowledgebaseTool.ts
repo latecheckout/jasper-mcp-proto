@@ -24,9 +24,9 @@ export interface SearchKnowledgeRequest {
  * 
  
  */
-const SEARCH_KNOWLEDGE_BASE_DESCRIPTION = `The Jasper Knowledge Base holds info on your company's clients, internal business (strategy docs, updates, etc.), and marketing content.
+const SEARCH_KNOWLEDGE_BASE_DESCRIPTION = `The Jasper Knowledge Base holds info about the user's company, industry, internal business (strategy docs, updates, etc.), and marketing content.
 
-Use Jasper AI's /searchKnowledge endpoint to find relevant documents using short, Google-style keyword queries or phrases. This tool surfaces related documents—it does not answer questions directly.
+Use Jasper AI's /searchKnowledge endpoint to find relevant documents using short, Google-style keyword queries or phrases. This tool surfaces related documents; it does not answer questions directly.
 
 Output modes:
 - **knowledgeIds only**: For passing source docs to another tool (e.g., content generation). Example: "take the AGM meeting notes and turn it into an investor update"—request only knowledgeIds for generate-content.
